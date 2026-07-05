@@ -1,8 +1,11 @@
-module github.com/lxsh-S/gostruc
+module github.com/lxsh-S/gos
 
 go 1.26.4
 
-require github.com/spf13/cobra v1.10.2
+require (
+	github.com/lxsh-S/gostruc v0.0.0-20260705084007-eeee8d2047dd
+	github.com/spf13/cobra v1.10.2
+)
 
 require (
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
