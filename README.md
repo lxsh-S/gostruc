@@ -25,5 +25,5 @@ go run .
 - [x] Basic prototype
 - [x] Adding cobra
 - [x] Adding project structure for Golang
-- [] Adding project structure for Next.js
-- [] Adding project structure for cpp
+- [ ] Adding project structure for Next.js
+- [ ] Adding project structure for cpp
