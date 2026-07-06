@@ -9,7 +9,7 @@ Gos is not intended to compete with any other project structuring tool it's a fu
 # Installation
 
 ```
-go install gitthub.com/lxsh-S/gos@latest
+go install github.com/lxsh-S/gos@latest
 ```
 
 # Contribute
