@@ -8,13 +8,11 @@ import (
 	"github.com/lxsh-S/gos/internal/cli/blueprint"
 )
 
-func Creatego(ProjectName string) {
-	projectName := ProjectName
-
-	for _, folder := range blueprint.Goblueprint(projectName) {
+func Creatego(projectName, projectType string) {
+	for _, folder := range blueprint.Goblueprint(projectName, projectType) {
 		err := os.MkdirAll(folder, 0o755)
 		if err != nil {
-			fmt.Printf("Errror creating folder structure %s: %v", &folder, err)
+			fmt.Printf("Errror creating folder structure %s: %v", folder, err)
 		}
 	}
 }

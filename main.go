@@ -11,18 +11,22 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var projectType string
+
 func main() {
 	rootCmd := &cobra.Command{
 		Use:   "gos [projectName]",
 		Short: "Gos is used to create folder structures fast!",
 		Args:  cobra.ExactArgs(1),
 		Run: func(cmd *cobra.Command, args []string) {
-			fmt.Printf("Building project: %s\n", color.CyanString(args[0]))
-			fmt.Println(color.GreenString("Done!"))
+			fmt.Printf("Building project: %s\n Project Type: %s\n", color.CyanString(args[0]), color.YellowString(projectType))
 			projectName := args[0]
-			create.Creatego(projectName)
+			create.Creatego(projectName, projectType)
+			fmt.Println(color.GreenString("Done!"))
 		},
 	}
+
+	rootCmd.Flags().StringVarP(&projectType, "type", "t", "std", "Project structure type ['std', 'api', 'web']")
 
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)
