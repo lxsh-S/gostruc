@@ -1,6 +1,11 @@
 package blueprint
 
-import "path/filepath"
+import (
+	"fmt"
+	"path/filepath"
+
+	"github.com/fatih/color"
+)
 
 func Goblueprint(projectName string, projectType string) []string {
 	switch projectType {
@@ -21,7 +26,7 @@ func Goblueprint(projectName string, projectType string) []string {
 			filepath.Join(projectName, "pkg", "utils"),
 		}
 
-	default:
+	case "std":
 		// Our OG
 		return []string{
 			projectName,
@@ -29,5 +34,9 @@ func Goblueprint(projectName string, projectType string) []string {
 			filepath.Join(projectName, "internal"),
 			filepath.Join(projectName, "pkg"),
 		}
+
+	default:
+		fmt.Println(color.RedString("Please prrovide a valid project Type eg.(cli, web, std)"))
+		return []string{}
 	}
 }

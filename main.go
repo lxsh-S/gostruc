@@ -15,9 +15,10 @@ var projectType string
 
 func main() {
 	rootCmd := &cobra.Command{
-		Use:   "gos [projectName]",
-		Short: "Gos is used to create folder structures fast!",
-		Args:  cobra.ExactArgs(1),
+		Use:     "gos [projectName]",
+		Short:   "Gos is used to create folder structures fast!",
+		Args:    cobra.ExactArgs(1),
+		Version: "0.3.0",
 		Run: func(cmd *cobra.Command, args []string) {
 			fmt.Printf("Building project: %s\n Project Type: %s\n", color.CyanString(args[0]), color.YellowString(projectType))
 			projectName := args[0]
