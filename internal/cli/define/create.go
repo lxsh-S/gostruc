@@ -6,6 +6,6 @@ func Create(projectName, projectType, projectLang string) {
 	if projectLang == "go" {
 		create.Creatego(projectName, projectType)
 	} else if projectLang == "ts" {
-		create.CreateTs(projectName)
+		create.CreateTs(projectName, projectType)
 	}
 }

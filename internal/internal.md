@@ -1,6 +1,6 @@
 # Internal
 
-This folder contains
+This folder contains:
 
 ```
 blueprint/

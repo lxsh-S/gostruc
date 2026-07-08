@@ -26,4 +26,5 @@ go run .
 - [x] Adding cobra
 - [x] Adding project structure for Golang
 - [x] Adding flag for project type for Golang projects
+- [x] Different language support
 - [ ] Adding project structure for cpp

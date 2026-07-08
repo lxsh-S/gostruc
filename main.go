@@ -23,14 +23,14 @@ func main() {
 		Args:    cobra.ExactArgs(1),
 		Version: "0.3.0",
 		Run: func(cmd *cobra.Command, args []string) {
-			fmt.Printf("Building project: %s\n Project Type: %s\n", color.CyanString(args[0]), color.YellowString(projectType))
+			fmt.Printf("Building project: %s\nProject Language: %s\nProject Type: %s\n", color.CyanString(args[0]), color.HiBlueString(projectLang), color.YellowString(projectType))
 			projectName := args[0]
 			define.Create(projectName, projectType, projectLang)
 			fmt.Println(color.GreenString("Done!"))
 		},
 	}
 
-	rootCmd.Flags().StringVarP(&projectType, "type", "t", "std", "Project structure type ['std', 'api', 'web']")
+	rootCmd.Flags().StringVarP(&projectType, "type", "t", "std", "Project structure type [go:'std', 'api', 'web'], [ts: 'api', 'nxtjs', 'lib', 'std']")
 
 	rootCmd.Flags().StringVarP(&projectLang, "lang", "l", "go", "Project Language ['go', 'ts', 'cpp']")
 

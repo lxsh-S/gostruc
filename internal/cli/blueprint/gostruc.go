@@ -23,7 +23,7 @@ func Goblueprint(projectName string, projectType string) []string {
 			filepath.Join(projectName, "pkg", "utils"),
 		}
 	default:
-		// Our OG
+		// Our OG (std)
 		return []string{
 			projectName,
 			filepath.Join(projectName, "cmd"),

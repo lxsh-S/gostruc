@@ -7,8 +7,8 @@ import (
 	"github.com/lxsh-S/gos/internal/cli/blueprint"
 )
 
-func CreateTs(projectName string) {
-	for _, folder := range blueprint.TsBlueprint(projectName) {
+func CreateTs(projectName, projectType string) {
+	for _, folder := range blueprint.TsBlueprint(projectName, projectType) {
 		err := os.MkdirAll(folder, 0o755)
 		if err != nil {
 			fmt.Printf("Errror creating folder structure %s: %v", folder, err)
