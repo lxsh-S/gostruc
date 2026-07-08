@@ -7,7 +7,7 @@ func CppBlueprint(projectName, projectType string) []string {
 
 	switch projectType {
 
-	case "cpp-app":
+	case "app":
 		// Game
 		folders = []string{
 			projectName,
@@ -18,7 +18,7 @@ func CppBlueprint(projectName, projectType string) []string {
 			filepath.Join(projectName, "cmake"),
 		}
 
-	case "cpp-lib":
+	case "lib":
 		// for building a reusabel library
 		folders = []string{
 			projectName,
