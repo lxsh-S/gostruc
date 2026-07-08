@@ -30,7 +30,7 @@ func main() {
 		},
 	}
 
-	rootCmd.Flags().StringVarP(&projectType, "type", "t", "std", "Project structure type [go:'std', 'api', 'web'], [ts: 'api', 'nxtjs', 'lib', 'std']")
+	rootCmd.Flags().StringVarP(&projectType, "type", "t", "std", "Project structure type [go:'std', 'api', 'web']; [ts: 'api', 'nxtjs', 'lib', 'std']; [cpp: 'app', 'lib', 'std']")
 
 	rootCmd.Flags().StringVarP(&projectLang, "lang", "l", "go", "Project Language ['go', 'ts', 'cpp']")
 

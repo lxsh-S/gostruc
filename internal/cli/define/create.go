@@ -7,5 +7,7 @@ func Create(projectName, projectType, projectLang string) {
 		create.Creatego(projectName, projectType)
 	} else if projectLang == "ts" {
 		create.CreateTs(projectName, projectType)
+	} else if projectLang == "cpp" {
+		create.CreatCpp(projectName, projectType)
 	}
 }

@@ -3,12 +3,11 @@ module github.com/lxsh-S/gos
 go 1.26.4
 
 require (
-	github.com/lxsh-S/gostruc v0.0.0-20260705084007-eeee8d2047dd
+	github.com/fatih/color v1.19.0
 	github.com/spf13/cobra v1.10.2
 )
 
 require (
-	github.com/fatih/color v1.19.0 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/mattn/go-colorable v0.1.14 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
