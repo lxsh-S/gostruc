@@ -27,4 +27,4 @@ go run .
 - [x] Adding project structure for Golang
 - [x] Adding flag for project type for Golang projects
 - [x] Different language support
-- [ ] Adding project structure for cpp
+- [x] Adding project structure for cpp
