@@ -1,10 +1,11 @@
 package blueprint
 
 import (
+	"fmt"
 	"path/filepath"
 )
 
-func Goblueprint(projectName string, projectType string) []string {
+func Goblueprint(projectName string, projectType string) ([]string, error) {
 	var folders []string
 	switch projectType {
 	case "api":
@@ -23,7 +24,8 @@ func Goblueprint(projectName string, projectType string) []string {
 			filepath.Join(projectName, "internal", "config"),
 			filepath.Join(projectName, "pkg", "utils"),
 		}
-	default:
+
+	case "std", "":
 		// Our OG (std)
 		folders = []string{
 			projectName,
@@ -32,6 +34,8 @@ func Goblueprint(projectName string, projectType string) []string {
 			filepath.Join(projectName, "pkg"),
 		}
 
+	default:
+		return nil, fmt.Errorf("unknown go project type: %q", projectType)
 	}
-	return folders
+	return folders, nil
 }

@@ -1,8 +1,11 @@
 package blueprint
 
-import "path/filepath"
+import (
+	"fmt"
+	"path/filepath"
+)
 
-func CppBlueprint(projectName, projectType string) []string {
+func CppBlueprint(projectName, projectType string) ([]string, error) {
 	var folders []string
 
 	switch projectType {
@@ -27,7 +30,8 @@ func CppBlueprint(projectName, projectType string) []string {
 			filepath.Join(projectName, "tests"),
 			filepath.Join(projectName, "examples"),
 		}
-	default:
+
+	case "std", "":
 		// std
 		folders = []string{
 			projectName,
@@ -36,6 +40,8 @@ func CppBlueprint(projectName, projectType string) []string {
 			filepath.Join(projectName, "build"),
 		}
 
+	default:
+		return nil, fmt.Errorf("unknown cpp project type: %q", projectType)
 	}
-	return folders
+	return folders, nil
 }

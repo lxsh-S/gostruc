@@ -1,13 +1,20 @@
 package define
 
-import "github.com/lxsh-S/gos/internal/cli/create"
+import (
+	"fmt"
 
-func Create(projectName, projectType, projectLang string) {
-	if projectLang == "go" {
-		create.Creatego(projectName, projectType)
-	} else if projectLang == "ts" {
-		create.CreateTs(projectName, projectType)
-	} else if projectLang == "cpp" {
-		create.CreatCpp(projectName, projectType)
+	"github.com/lxsh-S/gos/internal/cli/create"
+)
+
+func Create(projectName, projectType, projectLang string) error {
+	switch projectLang {
+	case "go":
+		return create.Creatego(projectName, projectType)
+	case "ts":
+		return create.CreateTs(projectName, projectType)
+	case "cpp":
+		return create.CreatCpp(projectName, projectType)
+	default:
+		return fmt.Errorf("unknown project language: %q (expected: go, ts, cpp)", projectLang)
 	}
 }

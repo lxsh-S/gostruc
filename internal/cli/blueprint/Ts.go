@@ -1,8 +1,11 @@
 package blueprint
 
-import "path/filepath"
+import (
+	"fmt"
+	"path/filepath"
+)
 
-func TsBlueprint(projectName string, projectType string) []string {
+func TsBlueprint(projectName string, projectType string) ([]string, error) {
 	var folders []string
 
 	switch projectType {
@@ -40,13 +43,16 @@ func TsBlueprint(projectName string, projectType string) []string {
 			filepath.Join(projectName, "src", "__tests__"),
 		}
 
-	default:
+	case "std", "":
 		// std
 		folders = []string{
 			filepath.Join(projectName, "src"),
 			filepath.Join(projectName, "dist"),
 		}
+
+	default:
+		return nil, fmt.Errorf("unknown ts project type: %q", projectType)
 	}
 
-	return folders
+	return folders, nil
 }
