@@ -21,7 +21,7 @@ func main() {
 		Use:     "gos [projectName]",
 		Short:   "Gos is used to create folder structures fast!",
 		Args:    cobra.ExactArgs(1),
-		Version: "0.5.5",
+		Version: "0.6.5",
 		RunE: func(cmd *cobra.Command, args []string) error {
 			fmt.Printf("Building project: %s\nProject Language: %s\nProject Type: %s\n", color.CyanString(args[0]), color.HiBlueString(projectLang), color.YellowString(projectType))
 			projectName := args[0]
