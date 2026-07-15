@@ -15,9 +15,9 @@ Gos is not intended to compete with any other project structuring tool it's a fu
 ```
 gos Make-project -l go -t std   --Creates the standard go project structure 
 
-gos Make-project -l go -api     --Creates a go boilerplate structure for API projects 
+gos Make-project -l go -t api     --Creates a go boilerplate structure for API projects 
 
-gos Make-project -l go -cli     --Creates a go boilerplate structure for cli projects <lxsh-s approved :D>
+gos Make-project -l go -t cli     --Creates a go boilerplate structure for cli projects <lxsh-s approved :D>
 ```
 
 ### C++
