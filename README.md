@@ -15,9 +15,9 @@ Gos is not intended to compete with any other project structuring tool it's a fu
 ```
 gos Make-project -l go -t std   --Creates the standard go project structure 
 
-gos Make-project -l go -api     --Creates a go biolerplate structure for API projects 
+gos Make-project -l go -api     --Creates a go boilerplate structure for API projects 
 
-gos Make-project -l go -cli     --Creates a go biolerplate structure for cli projects <lxsh-s approved :D>
+gos Make-project -l go -cli     --Creates a go boilerplate structure for cli projects <lxsh-s approved :D>
 ```
 
 ### C++
@@ -25,9 +25,9 @@ gos Make-project -l go -cli     --Creates a go biolerplate structure for cli pro
 ```
 gos Make-project -l cpp -t std    --Creates the standard cpp project strucutre 
 
-gos Make-project -l cpp -t app    --Creates a cpp biolerplate structure for app/game
+gos Make-project -l cpp -t app    --Creates a cpp boilerplate structure for app/game
 
-gos Make-project -l cpp -t lib    --Creates a cpp biolerplate structure for a reusable library
+gos Make-project -l cpp -t lib    --Creates a cpp boilerplate structure for a reusable library
 ```
 
 ### Typescript
@@ -35,9 +35,9 @@ gos Make-project -l cpp -t lib    --Creates a cpp biolerplate structure for a re
 ```
 gos Make-project -l ts -t std   --Creates the standard Typescript project strucutre
 
-gos Make-project -l ts -t lib   --Creates a Typescript biolerplate for a library
+gos Make-project -l ts -t lib   --Creates a Typescript boilerplate for a library
 
-gos Make-project -l ts -t api   --Creates a Typescript biolerplate for a API projects
+gos Make-project -l ts -t api   --Creates a Typescript boilerplate for a API projects
 
 gos Make-project -l ts -t nxtjs --Creates a standard Typescript biolerplate for Next.js projects
 ```
