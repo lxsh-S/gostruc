@@ -29,4 +29,34 @@ jobs:
           args: release --clean
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          HOMEBREW_TAP_GITHUB_TOKEN: ${{ secrets.HOMEBREW_TAP_GITHUB_TOKEN }}
+
+      - name: Update AUR package
+        run: |
+          set -euo pipefail
+
+          VERSION="${GITHUB_REF#refs/tags/v}"
+          echo "Releasing AUR version: $VERSION"
+
+          # Clone the AUR repo
+          SSH_DIR="${{ runner.temp }}/.ssh"
+          mkdir -p "$SSH_DIR"
+          echo "${{ secrets.AUR_SSH_PRIVATE_KEY }}" > "$SSH_DIR/aur_key"
+          chmod 600 "$SSH_DIR/aur_key"
+          export GIT_SSH_COMMAND="ssh -i $SSH_DIR/aur_key -o StrictHostKeyChecking=accept-new"
+
+          git clone ssh://aur@aur.archlinux.org/gos-bin.git aur-repo
+          cd aur-repo
+
+          # Bump pkgver and reset pkgrel
+          sed -i "s/^pkgver=.*/pkgver=${VERSION}/" PKGBUILD
+          sed -i "s/^pkgrel=.*/pkgrel=1/" PKGBUILD
+
+          # Update .SRCINFO (makepkg isn't available on Ubuntu, so sed it)
+          sed -i "s/^\tpkgver = .*/\tpkgver = ${VERSION}/" .SRCINFO
+          sed -i "s/^\tpkgrel = .*/\tpkgrel = 1/" .SRCINFO
+
+          git config user.name "github-actions"
+          git config user.email "${{ secrets.AUR_EMAIL }}"
+          git add PKGBUILD .SRCINFO
+          git commit -m "v${VERSION}: bump to ${VERSION}" || echo "No changes to commit"
+          git push
