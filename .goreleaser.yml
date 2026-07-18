@@ -20,7 +20,5 @@ archives:
 release:
   github:
     owner: lxsh-S
-    name: gostruc
-
 checksum:
   disable: true
