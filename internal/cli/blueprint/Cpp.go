@@ -3,16 +3,17 @@ package blueprint
 import (
 	"fmt"
 	"path/filepath"
+
+	"github.com/lxsh-S/gos/templates"
 )
 
-func CppBlueprint(projectName, projectType string) ([]string, error) {
-	var folders []string
-
+func CppBlueprint(projectName, projectType string) (*Blueprint, error) {
+	bp := &Blueprint{}
 	switch projectType {
 
 	case "app":
 		// Game
-		folders = []string{
+		bp.Folders = []string{
 			projectName,
 			filepath.Join(projectName, "src"),
 			filepath.Join(projectName, "include"),
@@ -20,10 +21,31 @@ func CppBlueprint(projectName, projectType string) ([]string, error) {
 			filepath.Join(projectName, "assets"),
 			filepath.Join(projectName, "cmake"),
 		}
+		dataMain, err := templates.FS.ReadFile("go/main.go.tmpl")
+		if err != nil {
+			return nil, err
+		}
+
+		dataMod, err := templates.FS.ReadFile("go/go.mod.tmpl")
+		if err != nil {
+			return nil, err
+		}
+
+		bp.Files = []File{
+			{
+				Path:    filepath.Join(projectName, "cmd", "api", "main.go"),
+				Content: string(dataMain),
+			},
+
+			{
+				Path:    filepath.Join(projectName, "go.mod"),
+				Content: string(dataMod),
+			},
+		}
 
 	case "lib":
 		// for building a reusabel library
-		folders = []string{
+		bp.Folders = []string{
 			projectName,
 			filepath.Join(projectName, "src"),
 			filepath.Join(projectName, "include", projectName),
@@ -33,7 +55,7 @@ func CppBlueprint(projectName, projectType string) ([]string, error) {
 
 	case "std", "":
 		// std
-		folders = []string{
+		bp.Folders = []string{
 			projectName,
 			filepath.Join(projectName, "src"),
 			filepath.Join(projectName, "tests"),
@@ -43,5 +65,5 @@ func CppBlueprint(projectName, projectType string) ([]string, error) {
 	default:
 		return nil, fmt.Errorf("unknown cpp project type: %q", projectType)
 	}
-	return folders, nil
+	return bp, nil
 }
