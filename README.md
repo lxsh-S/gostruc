@@ -169,13 +169,13 @@ gos Make-project -l ts -t nxtjs --Creates a standard Typescript biolerplate for 
 ### AUR (Arch User Repository)
 
 ```
-yay -S gos-bin --Not recommended because I manage to break it every other day
+yay -S gos-bin 
 ```
 
 ### Using Go
 
 ```bash
-go install github.com/lxsh-S/gos@latest --Recomended way to install
+go install github.com/lxsh-S/gos@latest 
 ```
 
 # Contribute
