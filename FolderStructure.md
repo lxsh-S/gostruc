@@ -1,5 +1,5 @@
 
-# File structure
+# Folder structure
 
 ## Go
 
