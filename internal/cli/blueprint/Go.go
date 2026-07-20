@@ -30,16 +30,25 @@ func Goblueprint(projectName string, projectType string) (*Blueprint, error) {
 			filepath.Join(projectName, "pkg"),
 		}
 
-		dataMain, err := templates.FS.ReadFile("go/main.go.tmpl")
+		dataMain, err := templates.FS.ReadFile("go/std/main.go.tmpl")
 		if err != nil {
 			return nil, err
 		}
 
-		dataMod, err := templates.FS.ReadFile("go/go.mod.tmpl")
+		dataMod, err := templates.FS.ReadFile("go/std/go.mod.tmpl")
 		if err != nil {
 			return nil, err
 		}
 
+		dataGitignore, err := templates.FS.ReadFile("go/std/gitignore.tmpl")
+		if err != nil {
+			return nil, err
+		}
+
+		dataReadme, err := templates.FS.ReadFile("go/std/README.md.tmpl")
+		if err != nil {
+			return nil, err
+		}
 		bp.Files = []File{
 			{
 				Path:    filepath.Join(projectName, "cmd", "api", "main.go"),
@@ -50,6 +59,16 @@ func Goblueprint(projectName string, projectType string) (*Blueprint, error) {
 				Path:    filepath.Join(projectName, "go.mod"),
 				Content: string(dataMod),
 			},
+
+			{
+				Path:    filepath.Join(projectName, ".gitignore"),
+				Content: string(dataGitignore),
+			},
+
+			{
+				Path:    filepath.Join(projectName, "README.md"),
+				Content: string(dataReadme),
+			},
 		}
 
 	case "cli":
@@ -59,15 +78,26 @@ func Goblueprint(projectName string, projectType string) (*Blueprint, error) {
 			filepath.Join(projectName, "internal", "config"),
 			filepath.Join(projectName, "pkg", "utils"),
 		}
-		dataMain, err := templates.FS.ReadFile("go/main.go.tmpl")
+		dataMain, err := templates.FS.ReadFile("go/cli/main.go.tmpl")
 		if err != nil {
 			return nil, err
 		}
 
-		dataMod, err := templates.FS.ReadFile("go/go.mod.tmpl")
+		dataMod, err := templates.FS.ReadFile("go/cli/go.mod.tmpl")
 		if err != nil {
 			return nil, err
 		}
+
+		dataGitignore, err := templates.FS.ReadFile("go/cli/gitignore.tmpl")
+		if err != nil {
+			return nil, err
+		}
+
+		dataReadme, err := templates.FS.ReadFile("go/cli/README.md.tmpl")
+		if err != nil {
+			return nil, err
+		}
+
 		bp.Files = []File{
 			{
 				Path:    filepath.Join(projectName, "cmd", "main.go"),
@@ -82,6 +112,16 @@ func Goblueprint(projectName string, projectType string) (*Blueprint, error) {
 			{
 				Path: filepath.Join(projectName, "go.mod"),
 			},
+
+			{
+				Path:    filepath.Join(projectName, ".gitignore"),
+				Content: string(dataGitignore),
+			},
+
+			{
+				Path:    filepath.Join(projectName, "README.md"),
+				Content: string(dataReadme),
+			},
 		}
 
 	case "std", "":
@@ -93,15 +133,26 @@ func Goblueprint(projectName string, projectType string) (*Blueprint, error) {
 			filepath.Join(projectName, "pkg"),
 		}
 
-		dataMain, err := templates.FS.ReadFile("go/main.go.tmpl")
+		dataMain, err := templates.FS.ReadFile("go/api/main.go.tmpl")
 		if err != nil {
 			return nil, err
 		}
 
-		dataMod, err := templates.FS.ReadFile("go/go.mod.tmpl")
+		dataMod, err := templates.FS.ReadFile("go/api/go.mod.tmpl")
 		if err != nil {
 			return nil, err
 		}
+
+		dataGitignore, err := templates.FS.ReadFile("go/api/gitignore.tmpl")
+		if err != nil {
+			return nil, err
+		}
+
+		dataReadme, err := templates.FS.ReadFile("go/api/README.md.tmpl")
+		if err != nil {
+			return nil, err
+		}
+
 		bp.Files = []File{
 			{
 				Path:    filepath.Join(projectName, "cmd", "main.go"),
@@ -111,6 +162,16 @@ func Goblueprint(projectName string, projectType string) (*Blueprint, error) {
 			{
 				Path:    filepath.Join(projectName, "go.mod"),
 				Content: string(dataMod),
+			},
+
+			{
+				Path:    filepath.Join(projectName, ".gitignore"),
+				Content: string(dataGitignore),
+			},
+
+			{
+				Path:    filepath.Join(projectName, "README.md"),
+				Content: string(dataReadme),
 			},
 		}
 
