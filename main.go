@@ -14,7 +14,7 @@ import (
 var (
 	projectLang string
 	projectType string
-	gomkdir     string
+	gomkdirFile string
 	list        bool
 )
 
@@ -41,12 +41,19 @@ func main() {
 				printSupported()
 				return nil
 			}
-			fmt.Printf("Building project: %s\nProject Language: %s\nProject Type: %s\n", color.CyanString(args[0]), color.HiBlueString(projectLang), color.YellowString(projectType))
 			projectName := args[0]
-			if err := define.Create(projectName, projectType, projectLang); err != nil {
-				return err
+			if projectName == "mkdir" {
+				folderName := gomkdirFile
+				define.GOMkdirRun(folderName)
+			} else {
+
+				fmt.Printf("Building project: %s\nProject Language: %s\nProject Type: %s\n", color.CyanString(args[0]), color.HiBlueString(projectLang), color.YellowString(projectType))
+
+				if err := define.Create(projectName, projectType, projectLang); err != nil {
+					return err
+				}
+				fmt.Println(color.GreenString("Done!"))
 			}
-			fmt.Println(color.GreenString("Done!"))
 			return nil
 		},
 	}
@@ -58,7 +65,7 @@ func main() {
 	rootCmd.Flags().BoolVar(&list, "list", false, "List all the project type combinations for each language")
 
 	// Adding mkdir flag
-	rootCmd.Flags().StringVarP(&gomkdir, "mkdir", "m", "mkdir", "Makes a directory")
+	rootCmd.Flags().StringVarP(&gomkdirFile, "gomkdir", "m", "gomkdir", "Makes a dir")
 
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(color.RedString("Error: %s", err))
