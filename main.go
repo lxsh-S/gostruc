@@ -45,6 +45,7 @@ func main() {
 			if projectName == "mkdir" {
 				folderName := gomkdirFile
 				define.GOMkdirRun(folderName)
+				fmt.Printf("Empty dir: %s created!", folderName)
 			} else {
 
 				fmt.Printf("Building project: %s\nProject Language: %s\nProject Type: %s\n", color.CyanString(args[0]), color.HiBlueString(projectLang), color.YellowString(projectType))
